@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  squid-tunnel:
+    image: dreg.be/lando/squid:5.7.0
+    hostname: squid
+    ports:
+      - "3128:3128"
+    volumes:
+      - "/opt/squid:/etc/squid:ro"
+      - "/var/log/squid:/var/log/squid"
+    restart: always
+#    entrypoint: /bin/bash -c
+    command: /etc/squid/squid.conf
+#    command: 
+#      - "while true; do sleep 10; done"
