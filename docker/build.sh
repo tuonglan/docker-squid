@@ -3,4 +3,6 @@
 VERSION=$(cat VERSION)
 NAME=$(cat NAME)
 
-docker build -f Dockerfile -t dreg.be/lando/$NAME:$VERSION .
+docker buildx build \
+    --builder container --platform linux/arm64/v8,linux/amd64 \
+    -f Dockerfile -t tuonglan/$NAME:$VERSION --push .
